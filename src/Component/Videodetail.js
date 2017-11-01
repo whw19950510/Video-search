@@ -1,4 +1,4 @@
-import react from "react";
+import React,{Component} from "react";
 const Videodetails=(props)=>{
     if(!props.video) {
         return <div>Loading..</div>

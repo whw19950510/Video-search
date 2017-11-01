@@ -6,7 +6,7 @@ class Videolistitem extends Component {
     }
     render(){
         return (
-            <li className="list-group-item">
+            <li onClick={()=>this.props.handleVideoSelect(this.props.video)} className="list-group-item">
                 <div className="video-list media">
                     <div className="media-left">
                         <img className="media-object" src={this.props.video.snippet.thumbnails.default.url}/>

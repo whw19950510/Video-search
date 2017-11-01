@@ -9,18 +9,25 @@ const API_KEY="AIzaSyB2fD6wJsRWly9lUCDaFT-RMyKPATH-cPI";
 class App extends Component{
         constructor(props) {
             super(props);
-            this.state={videos:[]};
+            this.state= {
+                videos:[],
+                selectedVideo:null
+            };
             YTSearch({key:API_KEY,term:"surfboards"},videos=>{
-                this.setState({videos:videos});
+                this.setState({
+                    videos:videos,
+                    selectedVideo:videos[0]
+                });
                 console.log(videos);
             });
         }
+        
         render(){
         return (
             <div>
                 <Searchbar />    {/*use state of this component to pass on*/}
-                <Videodetail video={this.state.videos.map(video=>{return video})}/>
-                <Videolist videos={this.state.videos}/>
+                <Videodetail video={this.state.selectedVideo} />
+                <Videolist handleVideoSelect={selectedVideo=>this.setState({selectedVideo:selectedVideo})} videos={this.state.videos}/>
             </div>
         )
     }
