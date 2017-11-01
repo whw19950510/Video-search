@@ -23,11 +23,13 @@ class App extends Component {
                 });
             });
         }
+        /*call back function,equals a promise, continues execution unitl return */
         
         render(){
+        const videoSearch=_.debounce((term)=>{this.videoSearch(term)},300)
         return (
             <div>
-                <Searchbar handleSearchTermChange={term=>this.videoSearch(term)}/>    {/*use state of this component to pass on*/}
+                <Searchbar handleSearchTermChange={videoSearch}/>    {/*use state of this component to pass on*/}
                 <Videodetail video={this.state.selectedVideo} />
                 <Videolist handleVideoSelect={selectedVideo=>this.setState({selectedVideo:selectedVideo})} videos={this.state.videos}/>
             </div>
